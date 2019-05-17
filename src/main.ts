@@ -1,1 +1,3 @@
-console.log('hello world');
+export function log(text:string):void {
+  console.log(text);
+}
