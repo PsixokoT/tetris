@@ -1,5 +1,6 @@
-export type ShapeRow = number[];
+export type ShapeRow = (number | undefined)[];
 export type ShapeData = ShapeRow[];
+export type ShapeDataFrames = ShapeData[];
 interface LevelData {
   points: number;
   speed: number;
@@ -9,7 +10,7 @@ interface LevelData {
 export interface ConfigData {
   width: number;
   height: number;
-  shapes: ShapeData[];
+  shapes: ShapeDataFrames[];
   points: number[];
   levels: LevelData[];
 }

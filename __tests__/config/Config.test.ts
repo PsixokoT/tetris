@@ -1,6 +1,7 @@
 import { Config } from '../../src/game/config/Config';
 import { ConfigData } from '../../src/game/typings';
 import { Level } from '../../src/game/data/Level';
+import { Shape } from '../../src/game/data/Shape';
 
 const testConfig: ConfigData = {
   width: 30,
@@ -8,12 +9,32 @@ const testConfig: ConfigData = {
   points: [1, 2, 3, 4],
   shapes: [
     [
-      [1, 1],
-      [0, 1]
+      [
+        [1, 1],
+        [0, 1]
+      ],
+      [
+        [0, 1],
+        [1, 1]
+      ],
+      [
+        [1, 0],
+        [1, 1]
+      ],
+      [
+        [1, 1],
+        [1, 0]
+      ]
     ],
     [
-      [0, 1],
-      [1, 0]
+      [
+        [0, 1],
+        [1, 0]
+      ],
+      [
+        [1, 0],
+        [0, 1]
+      ]
     ]
   ],
   levels: [
@@ -133,7 +154,8 @@ describe('Config', () => {
     it('return shape with correct color', () => {
       const config = new Config(testConfig);
       const level = config.getLevelByPoints(0);
-      const shape = config.getRandomShape(level);
+      const shape = config.getRandomShape(level.getRandomColor());
+      expect(shape).toBeInstanceOf(Shape);
       expect([1, 2]).toContain(shape.color);
     });
   });

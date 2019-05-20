@@ -1,5 +1,5 @@
 import deepmerge from 'deepmerge';
-import { ConfigData, ShapeData } from '../typings';
+import { ConfigData, ShapeData, ShapeDataFrames } from '../typings';
 import { Level } from '../data/Level';
 import { Shape } from '../data/Shape';
 
@@ -14,7 +14,7 @@ export class Config {
   public readonly width: number;
   public readonly height: number;
   private readonly _points: number[];
-  private readonly _shapes: ShapeData[];
+  private readonly _shapes: ShapeDataFrames[];
   private readonly _levels: Level[];
 
   constructor(data: ConfigData) {
@@ -40,9 +40,9 @@ export class Config {
     return this._points[linesCount - 1];
   }
 
-  getRandomShape(level: Level): Shape {
-    const shapeData: ShapeData = this._shapes[Math.floor(Math.random() * this._shapes.length)];
-    return new Shape(level.getRandomColor(), shapeData);
+  getRandomShape(color:number): Shape {
+    const shapeDataFrames: ShapeDataFrames = this._shapes[Math.floor(Math.random() * this._shapes.length)];
+    return new Shape(color, shapeDataFrames);
   }
 
   getLevelByPoints(value: number): Level {
