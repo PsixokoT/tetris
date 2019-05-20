@@ -19,7 +19,7 @@ describe('Shape', () => {
   });
 
   describe('data', () => {
-    it('fill block element in to color', () => {
+    it('fill block element in to color and set into coords', () => {
       const frames:ShapeDataFrames = [
         [
           [1, 0, 0],
@@ -27,12 +27,46 @@ describe('Shape', () => {
           [0, 0, 1]
         ]
       ];
-      const shape = new Shape(0, frames);
+      const shape = new Shape(3, frames);
       expect(shape.data).toEqual([
-        [0, undefined, undefined],
-        [0,0,0],
-        [undefined, undefined, 0]
+        [3, 3, undefined],
+        [undefined, 3, undefined],
+        [undefined, 3, 3]
       ]);
+    });
+  });
+
+  describe('Iterator', () => {
+    it('in for..of and other loops its take not empty points', () => {
+      const frames:ShapeDataFrames = [
+        [
+          [0, 0, 0],
+          [1, 1, 1],
+          [0, 1, 0]
+        ]
+      ];
+      const shape = new Shape(4, frames);
+      expect([...shape]).toEqual([
+        { x: 0, y: 1, color: 4 },
+        { x: 1, y: 1, color: 4 },
+        { x: 1, y: 2, color: 4 },
+        { x: 2, y: 1, color: 4 }
+      ]);
+    });
+  });
+
+  describe('size', () => {
+    it('return correct values', () => {
+      const frames:ShapeDataFrames = [
+        [
+          [1],
+          [1],
+          [0]
+        ]
+      ];
+      const shape = new Shape(0, frames);
+      expect(shape.width).toEqual(1);
+      expect(shape.height).toEqual(3);
     });
   });
 
