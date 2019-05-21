@@ -114,11 +114,11 @@ describe('Config', () => {
     });
   });
 
-  describe('getLevelByPoints()', () => {
+  describe('getLevelByScore()', () => {
     const config = new Config(testConfig);
 
     it('return first level at 0 score', () => {
-      const level = config.getLevelByPoints(0);
+      const level = config.getLevelByScore(0);
       expect(level).toBeInstanceOf(Level);
       expect(level).toMatchObject({
         id: '0',
@@ -128,7 +128,7 @@ describe('Config', () => {
     });
 
     it('return second level at 1500 score', () => {
-      const level = config.getLevelByPoints(1500);
+      const level = config.getLevelByScore(1500);
       expect(level).toBeInstanceOf(Level);
       expect(level).toMatchObject({
         id: '1',
@@ -139,7 +139,7 @@ describe('Config', () => {
     });
 
     it('return last level if score count very big', () => {
-      const level = config.getLevelByPoints(100500);
+      const level = config.getLevelByScore(100500);
       expect(level).toBeInstanceOf(Level);
       expect(level).toMatchObject({
         id: '2',
@@ -150,13 +150,11 @@ describe('Config', () => {
     });
   });
 
-  describe('getRandomShape()', () => {
+  describe('getRandomShapeData()', () => {
     it('return shape with correct color', () => {
       const config = new Config(testConfig);
-      const level = config.getLevelByPoints(0);
-      const shape = config.getRandomShape(level.getRandomColor());
-      expect(shape).toBeInstanceOf(Shape);
-      expect([1, 2]).toContain(shape.color);
+      const shapeData = config.getRandomShapeData();
+      expect(shapeData).toBeInstanceOf(Shape);
     });
   });
 });

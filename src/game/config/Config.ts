@@ -42,12 +42,11 @@ export class Config {
     return this._score[linesCount - 1];
   }
 
-  getRandomShape(color:number): Shape {
-    const shapeData: ShapeData = this._shapes[Math.floor(Math.random() * this._shapes.length)];
-    return new Shape(color, shapeData);
+  getRandomShapeData(): ShapeData {
+    return this._shapes[Math.floor(Math.random() * this._shapes.length)];
   }
 
-  getLevelByPoints(value: number): Level {
+  getLevelByScore(value: number): Level {
     let level: Level = this._levels[0]; // TODO: remove this hack `Variable 'level' is used before being assigned.`
     for (let i: number = 0; i < this._levels.length; i++) {
       level = this._levels[i];

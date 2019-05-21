@@ -24,8 +24,6 @@ export interface Point {
 export type ShapePoints = Point[];
 export type ShapeFrames = ShapePoints[];
 
-export type Line = number[];
-
 declare module '*/default.json' {
   const value:ConfigData;
   export default value;

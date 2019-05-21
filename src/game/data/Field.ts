@@ -1,14 +1,14 @@
-import { Line } from '../typings';
 import { Shape } from './Shape';
 
 export type StepResult = 'done' | 'next' | 'complete';
+type Column = number[];
 
 export class Field {
-  private readonly _lines:Line[];
+  private readonly _map:Column[];
   private _shape?:Shape;
 
   constructor(public readonly width:number, public readonly height:number) {
-    this._lines = new Array(height).fill(new Array(width));
+    this._map = new Array(width).fill(new Array(height));
   }
 
   step():StepResult {
