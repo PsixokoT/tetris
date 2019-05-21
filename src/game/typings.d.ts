@@ -1,9 +1,9 @@
 export type ShapeRow = number[];
-export type ShapeData = ShapeRow[];
-export type ShapeDataFrames = ShapeData[];
+export type ShapeDataMap = ShapeRow[];
+export type ShapeDataFrames = ShapeDataMap[];
 
 interface LevelData {
-  points: number;
+  score: number;
   speed: number;
   colors: number[];
 }
@@ -12,12 +12,19 @@ export interface ConfigData {
   width: number;
   height: number;
   shapes: ShapeDataFrames[];
-  points: number[];
+  score: number[];
   levels: LevelData[];
 }
 
-export type FieldPoints = (number | undefined)[]; // Color || empty
-export type FieldData = FieldPoints[];// data[x][y] = empty || color
+export interface Point {
+  x: number;
+  y: number;
+}
+
+export type ShapePoints = Point[];
+export type ShapeFrames = ShapePoints[];
+
+export type Line = number[];
 
 declare module '*/default.json' {
   const value:ConfigData;

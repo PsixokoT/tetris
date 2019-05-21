@@ -8,20 +8,20 @@ describe('Level', () => {
       }).toThrowError(new RangeError('speed mast be greater than 0'));
     });
 
-    it('max & min points', () => {
+    it('max & min score', () => {
       expect(() => {
         const _ = new Level('test', 1, 100, 0, [1]);
-      }).toThrow(new RangeError('maxPoints mast be greater than minPoints'));
+      }).toThrow(new RangeError('maxScore mast be greater than minScore'));
     });
   });
 
-  it('containPoints', () => {
+  it('containScore', () => {
     const level = new Level('0', 1, 1000, 2000, [1]);
-    expect(level.containPoints(500)).toBeFalsy();
-    expect(level.containPoints(1000)).toBeTruthy();
-    expect(level.containPoints(1500)).toBeTruthy();
-    expect(level.containPoints(2000)).toBeFalsy();
-    expect(level.containPoints(2500)).toBeFalsy();
+    expect(level.containScore(500)).toBeFalsy();
+    expect(level.containScore(1000)).toBeTruthy();
+    expect(level.containScore(1500)).toBeTruthy();
+    expect(level.containScore(2000)).toBeFalsy();
+    expect(level.containScore(2500)).toBeFalsy();
   });
 
   it('getRandomColor', () => {

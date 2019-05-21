@@ -1,15 +1,18 @@
-import { FieldData } from '../typings';
+import { Line } from '../typings';
 import { Shape } from './Shape';
 
+export type StepResult = 'done' | 'next' | 'complete';
+
 export class Field {
-  private readonly _data:FieldData;
-  public get data() {
-    return this._data;
-  }
+  private readonly _lines:Line[];
   private _shape?:Shape;
 
   constructor(public readonly width:number, public readonly height:number) {
-    this._data = new Array(width).fill(new Array(height));
+    this._lines = new Array(height).fill(new Array(width));
+  }
+
+  step():StepResult {
+    return 'done';
   }
 
   addShape(shape:Shape) {

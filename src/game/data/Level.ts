@@ -2,16 +2,16 @@ export class Level {
   constructor(
     public readonly id: string,
     public readonly speed: number,
-    public readonly minPoints: number,
-    public readonly maxPoints: number,
+    public readonly minScore: number,
+    public readonly maxScore: number,
     private readonly _colors: number[]
   ) {
     if (speed <= 0) throw new RangeError('speed mast be greater than 0');
-    if (maxPoints < minPoints) throw new RangeError('maxPoints mast be greater than minPoints');
+    if (maxScore < minScore) throw new RangeError('maxScore mast be greater than minScore');
   }
 
-  containPoints(value:number):Boolean {
-    return value >= this.minPoints && value < this.maxPoints;
+  containScore(value:number):Boolean {
+    return value >= this.minScore && value < this.maxScore;
   }
 
   getRandomColor(): number {
