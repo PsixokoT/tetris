@@ -1,6 +1,6 @@
-import { Shape } from '../../src/game/data/Shape';
-import { ShapeDataFrames } from '../../src/game/typings';
-import { ShapeData } from '../../src/game/data/ShapeData';
+import { Shape } from '../../../src/game/data/Shape';
+import { ShapeDataFrames } from '../../../src/game/typings';
+import { ShapeData } from '../../../src/game/data/ShapeData';
 
 const createShape = (frames: ShapeDataFrames, color: number = 0) => new Shape(color, new ShapeData(frames));
 

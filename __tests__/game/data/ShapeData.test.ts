@@ -1,5 +1,5 @@
-import { ShapeDataFrames } from '../../src/game/typings';
-import { ShapeData } from '../../src/game/data/ShapeData';
+import { ShapeDataFrames } from '../../../src/game/typings';
+import { ShapeData } from '../../../src/game/data/ShapeData';
 
 describe('ShapeData', () => {
   describe('set frames', () => {

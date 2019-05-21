@@ -1,4 +1,4 @@
-import { Level } from '../../src/game/data/Level';
+import { Level } from '../../../src/game/data/Level';
 
 describe('Level', () => {
   describe('validations', () => {

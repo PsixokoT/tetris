@@ -1,4 +1,4 @@
-import { Game } from '../src/game/Game';
+import { Game } from '../../src/game/Game';
 
 describe('Game', () => {
   describe('static create', () => {

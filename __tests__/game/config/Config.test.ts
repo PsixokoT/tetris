@@ -1,7 +1,7 @@
-import { Config } from '../../src/game/config/Config';
-import { ConfigData } from '../../src/game/typings';
-import { Level } from '../../src/game/data/Level';
-import { Shape } from '../../src/game/data/Shape';
+import { Config } from '../../../src/game/config/Config';
+import { ConfigData } from '../../../src/game/typings';
+import { Level } from '../../../src/game/data/Level';
+import { Shape } from '../../../src/game/data/Shape';
 
 const testConfig: ConfigData = {
   width: 30,
