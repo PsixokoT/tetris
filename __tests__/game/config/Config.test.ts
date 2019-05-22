@@ -2,6 +2,7 @@ import { Config } from '../../../src/game/config/Config';
 import { ConfigData } from '../../../src/game/typings';
 import { Level } from '../../../src/game/data/Level';
 import { Shape } from '../../../src/game/data/Shape';
+import { ShapeData } from '../../../src/game/data/ShapeData';
 
 const testConfig: ConfigData = {
   width: 30,
@@ -154,7 +155,7 @@ describe('Config', () => {
     it('return shape with correct color', () => {
       const config = new Config(testConfig);
       const shapeData = config.getRandomShapeData();
-      expect(shapeData).toBeInstanceOf(Shape);
+      expect(shapeData).toBeInstanceOf(ShapeData);
     });
   });
 });

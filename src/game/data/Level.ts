@@ -10,7 +10,7 @@ export class Level {
     if (maxScore < minScore) throw new RangeError('maxScore mast be greater than minScore');
   }
 
-  containScore(value:number):Boolean {
+  containScore(value:number):boolean {
     return value >= this.minScore && value < this.maxScore;
   }
 
