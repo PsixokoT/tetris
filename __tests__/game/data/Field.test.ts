@@ -223,5 +223,73 @@ describe('Field', () => {
         '1 0 1'
       );
     });
+
+    it('should move shape down', () => {
+      const { field, shape } = createFieldWithShape(3, 3, [
+        [1]
+      ]);
+      field.step();
+      expect(shape.y).toEqual(1);
+    });
+
+    it('should return -1 if round not complete', () => {
+      const { field, shape } = createFieldWithShape(3, 3, [
+        [1]
+      ]);
+      expect(field.step()).toEqual(-1);
+      expect(field.shape).toBe(shape);
+    });
+
+    it('should clear shape if round complete', () => {
+      const { field } = createFieldWithShape(3, 3, [
+        [1, 0, 1],
+        [1, 0, 1],
+        [1, 0, 1]
+      ]);
+      field.step();
+      const shape = new Shape(0, new ShapeData(
+        [
+          [
+            [1],
+            [1],
+            [1]
+          ]
+        ]
+      ));
+      field.addShape(shape);
+      expect(field.step()).toEqual(3);
+      expect(field.shape).toBeUndefined();
+    });
+
+    it('should correct clear lines', () => {
+      const { field } = createFieldWithShape(5, 5, [
+        [1, 1, 0, 1, 1],
+        [1, 0, 0, 1, 1],
+        [1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 0]
+      ]);
+      field.step();
+      const shape = new Shape(0, new ShapeData(
+        [
+          [
+            [1],
+            [1],
+            [1],
+            [1]
+          ]
+        ]
+      ));
+      field.addShape(shape);
+      expect(field.step()).toEqual(-1);
+      expect(field.step()).toEqual(2);
+      expect(field.toString()).toEqual('' +
+        '0 0 0 0 0' + '\n' +
+        '0 0 0 0 0' + '\n' +
+        '1 1 0 1 1' + '\n' +
+        '1 0 1 1 1' + '\n' +
+        '1 1 1 1 0'
+      );
+    });
   });
 });

@@ -95,6 +95,7 @@ export class Field {
           col.unshift(undefined);
         });
         count++;
+        y++;
       }
     }
     return count;
