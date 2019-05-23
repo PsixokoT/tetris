@@ -158,4 +158,70 @@ describe('Field', () => {
       );
     });
   });
+
+  describe('rotate', () => {
+    it('should rotate shape if can', () => {
+      const field = new Field(5, 3);
+      const shape = new Shape(0, new ShapeData([
+        [
+          [1, 0],
+          [1, 1]
+        ],
+        [
+          [1, 1],
+          [1, 0]
+        ]
+      ]));
+      field.addShape(shape);
+      field.rotate();
+      expect(field.toString()).toEqual('' +
+        '0 0 1 1 0' + '\n' +
+        '0 0 1 0 0' + '\n' +
+        '0 0 0 0 0'
+      );
+    });
+
+    it('should not rotate shape if can not', () => {
+      const { field } = createFieldWithShape(3, 3, [
+        [0, 0, 0],
+        [1, 0, 1],
+        [1, 0, 1]
+      ]);
+      field.step();
+
+      const shape = new Shape(0, new ShapeData([
+        [
+          [1, 1, 1]
+        ],
+        [
+          [1, 0, 0],
+          [1, 0, 0],
+          [1, 0, 0]
+        ]
+      ]));
+      field.addShape(shape);
+      field.rotate();
+      expect(field.toString()).toEqual('' +
+        '1 1 1' + '\n' +
+        '1 0 1' + '\n' +
+        '1 0 1'
+      );
+    });
+  });
+
+  describe('step()', () => {
+    it('return lines count', () => {
+      const { field } = createFieldWithShape(3, 3, [
+        [1, 0, 1],
+        [1, 0, 1],
+        [1, 1, 1]
+      ]);
+      expect(field.step()).toEqual(1);
+      expect(field.toString()).toEqual('' +
+        '0 0 0' + '\n' +
+        '1 0 1' + '\n' +
+        '1 0 1'
+      );
+    });
+  });
 });

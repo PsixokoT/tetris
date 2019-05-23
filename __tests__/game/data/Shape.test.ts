@@ -109,5 +109,13 @@ describe('Shape', () => {
       shape.rotate(-3);
       expect(shape.currentFrame).toEqual(3);
     });
+
+    it('should remove currentFrame if rotate back', () => {
+      const shape = createShape([[], []]);
+      shape.rotate();
+      expect(shape.currentFrame).toEqual(1);
+      shape.rotate(-1);
+      expect(shape.currentFrame).toEqual(0);
+    });
   });
 });

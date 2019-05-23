@@ -32,7 +32,7 @@ export class Shape {
   rotate(count: number = 1) {
     const len = this._data.framesCount;
     const value = (this._currentFrame + count) % len;
-    this._currentFrame = count < 0 ? len + value : value;
+    this._currentFrame = value < 0 ? len + value : value;
   }
 
   toString() {
