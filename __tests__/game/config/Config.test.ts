@@ -1,7 +1,6 @@
 import { Config } from '../../../src/game/config/Config';
 import { ConfigData } from '../../../src/game/typings';
 import { Level } from '../../../src/game/data/Level';
-import { Shape } from '../../../src/game/data/Shape';
 import { ShapeData } from '../../../src/game/data/ShapeData';
 
 const testConfig: ConfigData = {
@@ -88,19 +87,25 @@ describe('Config', () => {
     it('shapes', () => {
       expect(() => {
         const _ = new Config({ width: 1, height: 1, shapes: [], levels: [], score: [] });
-      }).toThrowError(new Error("shapes can't be empty"));
+      }).toThrowError(new Error('shapes can\'t be empty'));
     });
 
     it('levels', () => {
       expect(() => {
         const _ = new Config({ width: 1, height: 1, shapes: [[]], levels: [], score: [] });
-      }).toThrowError(new Error("levels can't be empty"));
+      }).toThrowError(new Error('levels can\'t be empty'));
     });
 
     it('points', () => {
       expect(() => {
-        const _ = new Config({ width: 1, height: 1, shapes: [[]], levels: [{ score: 0 , colors: [], speed: 0 }], score: [] });
-      }).toThrowError(new Error("score can't be empty"));
+        const _ = new Config({
+          width: 1,
+          height: 1,
+          shapes: [[]],
+          levels: [{ score: 0, colors: [], speed: 0 }],
+          score: []
+        });
+      }).toThrowError(new Error('score can\'t be empty'));
     });
   });
 

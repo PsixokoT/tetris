@@ -1,7 +1,6 @@
 import deepmerge from 'deepmerge';
 import { ConfigData } from '../typings';
 import { Level } from '../data/Level';
-import { Shape } from '../data/Shape';
 import { ShapeData } from '../data/ShapeData';
 
 export class Config {

@@ -11,10 +11,10 @@ export class Game {
     return new Game(config);
   }
 
-  private _score?:number;
-  private _level?:Level;
-  private _field?:Field;
-  private _nextShape?:ShapeData;
+  private _score?: number;
+  private _level?: Level;
+  private _field?: Field;
+  private _nextShape?: ShapeData;
 
   constructor(public config: Config) {
   }

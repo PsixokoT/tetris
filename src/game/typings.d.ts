@@ -25,6 +25,6 @@ export type ShapePoints = Point[];
 export type ShapeFrames = ShapePoints[];
 
 declare module '*/default.json' {
-  const value:ConfigData;
+  const value: ConfigData;
   export default value;
 }

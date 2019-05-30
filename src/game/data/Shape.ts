@@ -14,7 +14,7 @@ export class Shape {
     return this._data.frames[this._currentFrame];
   }
 
-  private get _shapeDataMap():ShapeDataMap {
+  private get _shapeDataMap(): ShapeDataMap {
     return this._data.shapeDataFrames[this._currentFrame];
   }
 

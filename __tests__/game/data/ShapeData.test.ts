@@ -4,7 +4,7 @@ import { ShapeData } from '../../../src/game/data/ShapeData';
 describe('ShapeData', () => {
   describe('set frames', () => {
     it('with one frame', () => {
-      const frames:ShapeDataFrames = [
+      const frames: ShapeDataFrames = [
         [
           [1, 0, 0],
           [1, 1, 1],
@@ -25,7 +25,7 @@ describe('ShapeData', () => {
     });
 
     it('with two frames', () => {
-      const frames:ShapeDataFrames = [
+      const frames: ShapeDataFrames = [
         [
           [1, 0, 0],
           [1, 1, 1],

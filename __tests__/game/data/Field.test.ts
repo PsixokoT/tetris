@@ -3,7 +3,7 @@ import { Shape } from '../../../src/game/data/Shape';
 import { ShapeData } from '../../../src/game/data/ShapeData';
 import { ShapeDataMap } from '../../../src/game/typings';
 
-const createFieldWithShape = (width:number, height:number, shapeData:ShapeDataMap) => {
+const createFieldWithShape = (width: number, height: number, shapeData: ShapeDataMap) => {
   const field = new Field(width, height);
   const shape = new Shape(0, new ShapeData([shapeData]));
   field.addShape(shape);
@@ -15,7 +15,7 @@ const createFieldWithShape = (width:number, height:number, shapeData:ShapeDataMa
 
 describe('Field', () => {
   describe('validations', () => {
-    it('speed', () => {
+    it('size', () => {
       expect(() => {
         const _ = new Field(0, -2);
       }).toThrow('invalid size');

@@ -26,7 +26,7 @@ describe('Level', () => {
 
   it('getRandomColor', () => {
     const level = new Level('0', 1, 0, 1, [1, 2]);
-    for (let i:number = 0; i < 10; i++) {
+    for (let i: number = 0; i < 10; i++) {
       expect([1, 2]).toContain(level.getRandomColor());
     }
   });
