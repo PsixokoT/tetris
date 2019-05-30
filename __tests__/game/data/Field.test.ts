@@ -22,6 +22,16 @@ describe('Field', () => {
     });
   });
 
+  describe('dispose()', () => {
+    it('should clear map', () => {
+      const { field } = createFieldWithShape(1, 1, [
+        [1]
+      ]);
+      field.dispose();
+      expect(field.toString()).toEqual('0');
+    });
+  });
+
   describe('toString()', () => {
     it('scenario #1', () => {
       const field = new Field(5, 4);
