@@ -2,7 +2,13 @@ import { Shape } from './Shape';
 
 type Column = (number | undefined)[];
 
-export class Field {
+export interface IField {
+  map: Column[];
+  shape?: Shape;
+  toString(): string;
+}
+
+export class Field implements IField {
   private _map!: Column[];
   public get map() {
     return this._map;

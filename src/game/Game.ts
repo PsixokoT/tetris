@@ -1,18 +1,18 @@
 import { Config } from './config/Config';
 import { ConfigData } from './typings';
-import { Field } from './data/Field';
+import { Field, IField } from './data/Field';
 import { Level } from './data/Level';
 import { Shape } from './data/Shape';
 import { ShapeData } from './data/ShapeData';
 
-export interface GameLoop {
+export interface IGame {
+  time: number;
+  field: IField;
   start(): void;
-  pause(): void;
-  unpause(): void;
   update(delta: number): void;
 }
 
-export class Game implements GameLoop {
+export class Game implements IGame {
 
   // --------------------------------------------------------------------------
   //  Static
@@ -42,21 +42,28 @@ export class Game implements GameLoop {
     return this._level;
   }
 
-  public readonly field: Field;
+  private _nextShape: ShapeData;
+  public get nextShape() {
+    return this._nextShape;
+  }
 
-  // --------------------------------------------------------------------------
-  //  Variables
-  // --------------------------------------------------------------------------
+  private readonly _field: Field;
+  public get field(): IField {
+    return this._field;
+  }
 
   private _time: number;
-  private _nextShape: ShapeData;
+  public get time() {
+    return this._time;
+  }
 
   constructor(public config: Config) {
+    // TODO : TypeScript Type Inference from method start() in constructor
     this._time = 0;
     this._score = 0;
     this._lines = 0;
     this._level = this.config.getLevelByScore(this._score);
-    this.field = new Field(this.config.width, this.config.height);
+    this._field = new Field(this.config.width, this.config.height);
     this._nextShape = this.config.getRandomShapeData();
   }
 
@@ -64,35 +71,26 @@ export class Game implements GameLoop {
     this._time = 0;
     this._score = 0;
     this._level = this.config.getLevelByScore(this._score);
-    this.field.dispose();
-    this.field.addShape(new Shape(this._level.getRandomColor(), this.config.getRandomShapeData()));
+    this._field.dispose();
+    let shape = new Shape(this._level.getRandomColor(), this.config.getRandomShapeData());
+    this._field.addShape(shape);
     this._nextShape = this.config.getRandomShapeData();
   }
 
-  update(delta: number) {
+  update(delta: number): boolean {
     this._time += delta;
     let stepsCount = Math.round(this._time / this._level.speed);
     if (stepsCount > 0) {
       while (stepsCount-- > 0) {
-        if (!this.step()) {
-          console.log('finish game');
-          break;
-        }
+        if (!this.step()) return false;
       }
       this._time = this._time % this._level.speed;
     }
-  }
-
-  pause() {
-    console.log('pause');
-  }
-
-  unpause() {
-    console.log('unpause');
+    return true;
   }
 
   private step(): boolean {
-    const linesCount = this.field.step();
+    const linesCount = this._field.step();
     if (linesCount >= 0) {
       this._lines += linesCount;
       this._score += this.config.getScore(linesCount);
@@ -100,7 +98,7 @@ export class Game implements GameLoop {
 
       const shape = new Shape(this._level.getRandomColor(), this._nextShape);
       this._nextShape = this.config.getRandomShapeData();
-      return this.field.addShape(shape);
+      return this._field.addShape(shape);
     }
     return true;
   }

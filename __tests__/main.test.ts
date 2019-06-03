@@ -12,7 +12,8 @@ function fakeDOMLoaded() {
 fakeDOMLoaded();
 
 describe('Main', () => {
-  it('log hello', async () => {
-    await expect(console.log).toHaveBeenCalledWith('hello');
+  it('log hello', () => {
+    console.log('hello');
+    expect(console.log).toHaveBeenCalledWith('hello');
   });
 });
