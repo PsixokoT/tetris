@@ -112,11 +112,12 @@ describe('Config', () => {
   describe('getScore()', () => {
     it('return score for lines clear from config', () => {
       const config = new Config(testConfig);
+      expect(config.getScore(0)).toEqual(0);
       expect(config.getScore(1)).toEqual(1);
       expect(config.getScore(2)).toEqual(2);
       expect(config.getScore(3)).toEqual(3);
       expect(config.getScore(4)).toEqual(4);
-      expect(config.getScore(5)).toEqual(undefined);
+      expect(config.getScore(5)).toEqual(0);
     });
   });
 

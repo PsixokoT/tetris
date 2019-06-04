@@ -1,10 +1,10 @@
-import { Shape } from './Shape';
+import { IShape, Shape } from './Shape';
 
 type Column = (number | undefined)[];
 
 export interface IField {
   map: Column[];
-  shape?: Shape;
+  shape?: IShape;
   toString(): string;
 }
 

@@ -38,7 +38,10 @@ export class Config {
   }
 
   getScore(linesCount: number): number {
-    return this._score[linesCount - 1];
+    if (linesCount > 0 && linesCount <= this._score.length) {
+      return this._score[linesCount - 1];
+    }
+    return 0;
   }
 
   getRandomShapeData(): ShapeData {

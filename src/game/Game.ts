@@ -10,6 +10,10 @@ export interface IGame {
   field: IField;
   start(): void;
   update(delta: number): void;
+  moveLeft(): void;
+  moveRight(): void;
+  moveDown(): void;
+  rotate(): void;
 }
 
 export class Game implements IGame {
@@ -87,6 +91,22 @@ export class Game implements IGame {
       this._time = this._time % this._level.speed;
     }
     return true;
+  }
+
+  moveLeft() {
+    this._field.move(-1, 0);
+  }
+
+  moveRight() {
+    this._field.move(1, 0);
+  }
+
+  moveDown() {
+    this._field.move(0, 1);
+  }
+
+  rotate() {
+    this._field.rotate();
   }
 
   private step(): boolean {

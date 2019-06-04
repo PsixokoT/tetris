@@ -1,7 +1,16 @@
 import { Point, ShapeDataMap, ShapePoints } from '../typings';
 import { ShapeData } from './ShapeData';
 
-export class Shape {
+export interface IShape {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  currentFrame: number;
+  frame: ShapePoints;
+}
+
+export class Shape implements IShape {
   public x: number = 0;
   public y: number = 0;
 
