@@ -187,8 +187,10 @@ describe('Game', () => {
     });
 
     it('should update time on delta', () => {
-      game.update(120);
-      expect(game.time).toEqual(120);
+      const spy = jest.spyOn(game as any, 'step');
+      game.update(220);
+      expect(game.time).toEqual(220);
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('should call step if time more the level speed', () => {

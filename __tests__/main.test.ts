@@ -13,7 +13,9 @@ fakeDOMLoaded();
 
 describe('Main', () => {
   it('log hello', () => {
-    console.log('hello');
-    expect(console.log).toHaveBeenCalledWith('hello');
+    let pr = new Promise(resolve => { resolve(); });
+    pr.then(() => {
+      expect(console.log).toHaveBeenCalledWith('hello');
+    });
   });
 });

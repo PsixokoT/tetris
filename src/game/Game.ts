@@ -4,6 +4,7 @@ import { Field, IField } from './data/Field';
 import { Level } from './data/Level';
 import { Shape } from './data/Shape';
 import { ShapeData } from './data/ShapeData';
+import { continueStatement } from '@babel/types';
 
 export interface IGame {
   time: number;
@@ -83,7 +84,7 @@ export class Game implements IGame {
 
   update(delta: number): boolean {
     this._time += delta;
-    let stepsCount = Math.round(this._time / this._level.speed);
+    let stepsCount = Math.floor(this._time / this._level.speed);
     if (stepsCount > 0) {
       while (stepsCount-- > 0) {
         if (!this.step()) return false;

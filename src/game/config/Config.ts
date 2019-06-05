@@ -18,6 +18,8 @@ export class Config {
   private readonly _levels: Level[];
 
   constructor(data: ConfigData) {
+    // https://gaming.stackexchange.com/questions/13057/tetris-difficulty
+    // http://harddrop.com/wiki/Tetris_(NES,_Nintendo)
     if (data.width <= 0 || data.height <= 0) throw new RangeError('incorrect size');
     if (!data.shapes.length) throw new Error('shapes can\'t be empty');
     if (!data.levels.length) throw new Error('levels can\'t be empty');
